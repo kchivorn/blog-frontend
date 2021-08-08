@@ -11,7 +11,7 @@ module PostService
   def self.create(params)
     options = { body: params }
     post_json = post('/posts', options)
-    post_hash = JSON.parse(post_json.body, symbolize_names: true)[:posts]
+    post_hash = JSON.parse(post_json.body, symbolize_names: true)[:post]
     Post.new(post_hash)
   end
 
@@ -24,7 +24,7 @@ module PostService
   def self.find_comments(post_id)
     comments_json = get("/posts/#{post_id}/comments")
     comments_hash = JSON.parse(comments_json.body, symbolize_names: true)[:comments]
-    comments_hash.map { |comment| Comment.new(comment) }
+    comments_hash.map { |comment| Comment.new(comment) } || []
   end
 
   def self.create_comments(params)

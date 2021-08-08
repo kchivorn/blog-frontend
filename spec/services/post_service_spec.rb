@@ -4,7 +4,7 @@ RSpec.describe PostService do
   describe '#create posts' do
     let(:post_response) do
       {
-        posts: {
+        post: {
           id: 1,
           title: 'Hello',
           body: 'What a wonderful day!'

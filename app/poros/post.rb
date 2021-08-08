@@ -5,7 +5,7 @@ class Post
               :created_at,
               :comments_path
 
-  def initialize(data)
+  def initialize(data = {})
     @id = data[:id]
     @title = data[:title]
     @body = data[:body]
