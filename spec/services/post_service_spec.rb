@@ -4,10 +4,10 @@ RSpec.describe PostService do
   describe '#create posts' do
     let(:post_response) do
       {
-        'posts' => {
-          'id' => 1,
-          'title' => 'Hello',
-          'body' => 'What a wonderful day!'
+        posts: {
+          id: 1,
+          title: 'Hello',
+          body: 'What a wonderful day!'
         }
       }
     end
@@ -21,17 +21,18 @@ RSpec.describe PostService do
     end
     it 'create a new post to the server' do
       post = PostService.create(params)
-      expect(post.parsed_response).to eq(post_response)
+      expect(post.title).to eq('Hello')
+      expect(post.body).to eq('What a wonderful day!')
     end
   end
 
   describe '#all posts' do
     let(:post_response) do
       {
-        'posts' => [{
-          'id' => 1,
-          'title' => 'Hello',
-          'body' => 'What a wonderful day!'
+        posts: [{
+          id: 1,
+          title: 'Hello',
+          body: 'What a wonderful day!'
         }]
       }
     end
@@ -41,16 +42,18 @@ RSpec.describe PostService do
     end
     it 'retrieve all posts from the server' do
       posts = PostService.all
-      expect(posts.parsed_response).to eq(post_response)
+      expect(posts.length).to equal(1)
+      expect(posts.first.title).to eq('Hello')
+      expect(posts.first.body).to eq('What a wonderful day!')
     end
   end
 
   describe '#find post by id' do
     let(:post_response) do
       {
-        'id' => 1,
-        'title' => 'Hello',
-        'body' => 'What a wonderful day!'
+        id: 1,
+        title: 'Hello',
+        body: 'What a wonderful day!'
       }
     end
     before do
@@ -59,18 +62,19 @@ RSpec.describe PostService do
     end
     it 'retrieve post by id from the server' do
       post = PostService.find(1)
-      expect(post.parsed_response).to eq(post_response)
+      expect(post.title).to eq('Hello')
+      expect(post.body).to eq('What a wonderful day!')
     end
   end
 
   describe '#find_comments' do
     let(:comments_response) do
       [{
-        'id' => 1,
-        'name' => 'John',
-        'body' => 'What a wonderful day!',
-        'post_id' => 1,
-        'created_at' => '2021-02-18 18:31:00 +0700'
+        id: 1,
+        name: 'John',
+        body: 'Great!',
+        post_id: 1,
+        created_at: '2021-02-18 18:31:00 +0700'
       }]
     end
     before do
@@ -79,8 +83,10 @@ RSpec.describe PostService do
     end
     it 'retrieve all comments of a post by post_id from the server' do
       comments = PostService.find_comments(1)
-      expect(comments.parsed_response.length).to eq(1)
-      expect(comments.parsed_response).to eq(comments_response)
+      expect(comments.length).to eq(1)
+      expect(comments.first.name).to eq('John')
+      expect(comments.first.body).to eq('Great!')
+      expect(comments.first.post_id).to eq(1)
     end
   end
 
@@ -89,7 +95,7 @@ RSpec.describe PostService do
       {
         'id' => 1,
         'name' => 'John',
-        'body' => 'What a wonderful day!',
+        'body' => 'Great!',
         'post_id' => 1,
         'created_at' => '2021-02-18 18:31:00 +0700'
       }
@@ -102,7 +108,9 @@ RSpec.describe PostService do
     end
     it 'retrieve all comments of a post by post_id from the server' do
       comment = PostService.create_comments(params)
-      expect(comment.parsed_response).to eq(comment_response)
+      expect(comment.name).to eq('John')
+      expect(comment.body).to eq('Great!')
+      expect(comment.post_id).to eq(1)
     end
   end
 end
