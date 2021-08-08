@@ -15,9 +15,10 @@ class PostsController < ApplicationController
   def create
     @post = PostService.create(post: post_params)
     if @post
-      flash.now[:alert] = 'The post was created successfully.'
-      render :show, notice: 'The post was created successfully.'
+      flash[:success] = 'The post was created successfully.'
+      redirect_to post_path(@post.id)
     else
+      flash[:error] = 'Failed to create the post'
       render :new
     end
   end

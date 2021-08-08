@@ -13,7 +13,7 @@
     .font-sans
       h3.font-bold.font-sans.break-normal.text-gray-900.pt-6.pb-2.text-3xl.md:text-3xl
         | Comments
-    - unless @comments.empty?
+    - unless @comments&.empty?
       = render partial: 'comments/comment', collection: @comments
     - else
       p
