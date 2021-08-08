@@ -1,0 +1,17 @@
+nav#header.fixed.w-full.z-10.top-0
+  #progress.h-1.z-20.top-0[style="background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);"]
+  .w-full.md:max-w-4xl.mx-auto.flex.flex-wrap.items-center.justify-between.mt-0.py-3
+    .pl-4
+      = link_to 'Minimal Blog', root_path, class: 'text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl'
+    .block.lg:hidden.pr-4
+      button#nav-toggle.flex.items-center.px-3.py-2.border.rounded.text-gray-500.border-gray-600.hover:text-gray-900.hover:border-green-500.appearance-none.focus:outline-none
+        svg.fill-current.h-3.w-3[viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"]
+          title
+            | Menu
+          path[d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"]
+    #nav-content.w-full.flex-grow.lg:flex.lg:items-center.lg:w-auto.hidden.lg:block.mt-2.lg:mt-0.bg-gray-100.md:bg-transparent.z-20
+      ul.list-reset.lg:flex.justify-end.flex-1.items-center
+        li.mr-3
+          = link_to 'Home', root_path, class: 'inline-block py-2 px-4 text-gray-900 font-bold no-underline'
+        li.mr-3
+          = link_to 'New Post', new_posts_path, class: 'inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4'
