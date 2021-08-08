@@ -1,8 +1,8 @@
 module PostsHelper
   TRUNCATE_LENGTH = 250
 
-  def format_date(date_str)
-    DateTime.parse(date_str).strftime('%Y-%m-%d %H:%M')
+  def format_date(date)
+    date.strftime('%Y-%m-%d %H:%M')
   end
 
   def truncate_post(post)

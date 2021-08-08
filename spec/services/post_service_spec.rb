@@ -108,7 +108,7 @@ RSpec.describe PostService do
         .to_return(status: 200, body: comment_response.to_json, headers: { content_type: 'application/json' })
     end
     it 'retrieve all comments of a post by post_id from the server' do
-      comment = PostService.create_comments(params)
+      comment = PostService.create_comment(params)
       expect(comment.name).to eq('John')
       expect(comment.body).to eq('Great!')
       expect(comment.post_id).to eq(1)

@@ -9,7 +9,7 @@ class Post
     @id = data[:id]
     @title = data[:title]
     @body = data[:body]
-    @created_at = data[:created_at]
+    @created_at = data[:created_at].nil? ? nil : DateTime.parse(data[:created_at])
     @comments_path = data[:comments_path]
   end
 end

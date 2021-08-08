@@ -10,6 +10,6 @@ class Comment
     @name = data[:name]
     @body = data[:body]
     @post_id = data[:post_id]
-    @created_at = data[:created_at]
+    @created_at = DateTime.parse(data[:created_at])
   end
 end

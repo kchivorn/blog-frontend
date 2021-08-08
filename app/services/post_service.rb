@@ -24,14 +24,15 @@ module PostService
   def self.find_comments(post_id)
     comments_json = get("/posts/#{post_id}/comments")
     comments_hash = JSON.parse(comments_json.body, symbolize_names: true)[:comments]
+    comments_hash.sort_by! { |c| c[:created_at] }.reverse!
     comments_hash.map { |comment| Comment.new(comment) } || []
   end
 
-  def self.create_comments(params)
-    post_id = params[:post_id]
-    options = { body: params.slice(:comment) }
+  def self.create_comment(params)
+    post_id = params[:comment][:post_id]
+    options = { body: params }
     comment_json = post("/posts/#{post_id}/comments", options)
-    comment_hash = JSON.parse(comment_json.body, symbolize_names: true)
+    comment_hash = JSON.parse(comment_json.body, symbolize_names: true)[:comment]
     Comment.new(comment_hash)
   end
 end
