@@ -69,13 +69,14 @@ RSpec.describe PostService do
 
   describe '#find_comments' do
     let(:comments_response) do
-      [{
-        id: 1,
-        name: 'John',
-        body: 'Great!',
-        post_id: 1,
-        created_at: '2021-02-18 18:31:00 +0700'
-      }]
+      { comments:
+        [{
+          id: 1,
+          name: 'John',
+          body: 'Great!',
+          post_id: 1,
+          created_at: '2021-02-18 18:31:00 +0700'
+        }] }
     end
     before do
       stub_request(:get, 'http://localhost:4000/posts/1/comments')

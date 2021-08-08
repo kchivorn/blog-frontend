@@ -23,7 +23,7 @@ module PostService
 
   def self.find_comments(post_id)
     comments_json = get("/posts/#{post_id}/comments")
-    comments_hash = JSON.parse(comments_json.body, symbolize_names: true)
+    comments_hash = JSON.parse(comments_json.body, symbolize_names: true)[:comments]
     comments_hash.map { |comment| Comment.new(comment) }
   end
 
