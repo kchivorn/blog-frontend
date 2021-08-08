@@ -1,0 +1,13 @@
+.w-full.px-4.md:px-6.text-xl.text-gray-800.leading-normal[style="font-family:Georgia,serif;"]
+  .font-sans
+    h1.font-bold.font-sans.break-normal.text-gray-900.pt-6.pb-2.text-3xl.md:text-4xl
+      = post.title
+    p.text-sm.md:text-base.font-normal.text-gray-600
+      | Published at
+      =< format_date(post.created_at)
+  p.py-6
+    |  👋
+    => truncate_post(post.body)
+    a.text-base.md:text-sm.text-green-500.font-bold.no-underline.hover:underline[href="#"]
+      | Read more >
+
