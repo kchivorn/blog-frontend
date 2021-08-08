@@ -8,6 +8,5 @@
   p.py-6
     |  👋
     => truncate_post(post.body)
-    a.text-base.md:text-sm.text-green-500.font-bold.no-underline.hover:underline[href="#"]
-      | Read more >
+    = link_to 'Read More >>>', post_path(post.id), class: 'text-base md:text-sm text-green-500 font-bold no-underline hover:underline'
 

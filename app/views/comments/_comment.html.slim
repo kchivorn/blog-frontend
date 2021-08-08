@@ -1,0 +1,9 @@
+.w-full.px-4.md:px-6.text-xl.text-gray-800.leading-normal[style="font-family:Georgia,serif;"]
+  .font-sans
+    h4.font-bold.font-sans.break-normal.text-gray-900.pt-5.text-3xl.md:text-2xl
+      => comment.name
+      span.text-sm.md:text-base.font-normal.text-gray-600
+        | Published at
+        =< format_date(comment.created_at)
+  p.py-6
+    => comment.body
