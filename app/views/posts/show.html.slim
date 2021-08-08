@@ -13,7 +13,11 @@
     .font-sans
       h3.font-bold.font-sans.break-normal.text-gray-900.pt-6.pb-2.text-3xl.md:text-3xl
         | Comments
-    = render partial: 'comments/comment', collection: @comments
+    - unless @comments.empty?
+      = render partial: 'comments/comment', collection: @comments
+    - else
+      p
+        | No comments yet.  Give the first comment.
 
   p.text-base.md:text-sm.text-green-500.font-bold.text-right
     | <

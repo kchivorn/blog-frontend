@@ -1,0 +1,12 @@
+.w-full.px-4.md:px-6.text-xl.text-gray-800.leading-normal[style="font-family:Georgia,serif;"]
+  = form_with url: posts_path do |f|
+    .font-sans
+      = f.label :title, name: 'post[title]', class: 'block mb-2 font-bold text-gray-600'
+      = f.text_field :title, name: 'post[title]', class: 'border border-gray-300 shadow p-3 w-full rounded mb-', required: true, autofocus: true
+
+    .font-sans
+      = f.label :body, name: 'post[body]', class: 'block mb-2 font-bold text-gray-600'
+      = f.text_area :body, name: 'post[body]', class: 'h-80 border border-gray-300 shadow p-3 w-full rounded mb-', required: true
+
+    .font-sans
+      = f.submit 'Publish', class: 'block w-full bg-green-500 hover:bg-green-700 cursor-pointer text-white font-bold p-4 rounded-lg'
