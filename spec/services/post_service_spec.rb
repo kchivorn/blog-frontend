@@ -93,25 +93,30 @@ RSpec.describe PostService do
 
   describe '#create_comments' do
     let(:comment_response) do
-      {
-        'id' => 1,
-        'name' => 'John',
-        'body' => 'Great!',
-        'post_id' => 1,
-        'created_at' => '2021-02-18 18:31:00 +0700'
-      }
+      { comment: {
+        id: 1,
+        name: 'John',
+        body: 'Great!',
+        post_id: '1',
+        created_at: '2021-02-18 18:31:00 +0700'
+      } }
     end
-    let(:params) { { post_id: 1, comment: { name: 'Hello', body: 'What a wonderful day!' } } }
+
+    let(:params) do
+      { comment: { name: 'Hello', body: 'What a wonderful day!', post_id: '1' } }
+    end
+
     before do
       stub_request(:post, 'http://localhost:4000/posts/1/comments')
-        .with(body: params.slice(:comment))
+        .with(body: params.to_hash)
         .to_return(status: 200, body: comment_response.to_json, headers: { content_type: 'application/json' })
     end
-    it 'retrieve all comments of a post by post_id from the server' do
+
+    it 'create a comment for a post' do
       comment = PostService.create_comment(params)
       expect(comment.name).to eq('John')
       expect(comment.body).to eq('Great!')
-      expect(comment.post_id).to eq(1)
+      expect(comment.post_id).to eq('1')
     end
   end
 end

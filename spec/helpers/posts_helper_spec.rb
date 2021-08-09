@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe PostsHelper, type: :helper do
   describe '#format_date' do
     it 'returns the correct date format from a date string' do
-      expect(helper.format_date('2021-02-18 15:15:37 +0700')).to match('2021-02-18 15:15')
+      date = DateTime.parse('2021-02-18 15:15:37 +0700')
+      expect(helper.format_date(date)).to match('2021-02-18 15:15')
     end
   end
 
