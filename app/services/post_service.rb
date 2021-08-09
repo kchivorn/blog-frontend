@@ -24,7 +24,9 @@ module PostService
   def self.find_comments(post_id)
     comments_json = get("/posts/#{post_id}/comments")
     comments_hash = JSON.parse(comments_json.body, symbolize_names: true)[:comments]
-    comments_hash.sort_by! { |c| c[:created_at] }.reverse!
+    comments_hash.sort_by! do |c|
+      c[:created_at]
+    end.reverse! # A good api would provide a way to retrieve records by a field in descending order without sorting here
     comments_hash.map { |comment| Comment.new(comment) } || []
   end
 

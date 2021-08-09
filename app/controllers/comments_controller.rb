@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @comment = PostService.create_comment(comment: comment_params)
     if @comment
       flash[:success] = 'The comment was created successfully.'
-      redirect_to post_path(@comment.post_id)
+      respond_to { |format| format.js }
     else
       flash[:error] = 'Failed to create the comment'
       render :new

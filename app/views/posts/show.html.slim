@@ -13,16 +13,13 @@
     .font-sans
       h3.font-bold.font-sans.break-normal.text-gray-900.pt-6.pb-2.text-3xl.md:text-3xl
         | Comments
-      = form_with url: post_comments_path(@post.id) do |f|
-        .font-sans
-          = f.label :body, class: 'block mb-2 font-bold text-gray-600'
-          = f.text_area :body, class: 'h-20 border border-gray-300 shadow p-3 w-full rounded mb-', required: true
-        = f.submit 'New Comment', class: 'block w-48 bg-green-500 hover:bg-green-700 cursor-pointer text-white font-bold p-4 rounded-lg'
-    - unless @comments&.empty?
-      = render partial: 'comments/comment', collection: @comments
-    - else
-      p
-        | No comments yet.  Give the first comment.
+      = render partial: 'comments/form', locals: { post_id: @post.id }
+    #comments
+      - unless @comments&.empty?
+        = render partial: 'comments/comment', collection: @comments
+      - else
+        p
+          | No comments yet. Give the first comment.
 
   p.text-base.md:text-sm.text-green-500.font-bold.text-right
     | <

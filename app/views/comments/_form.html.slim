@@ -1,0 +1,5 @@
+= form_with url: post_comments_path(post_id), data: {remote: true} do |f|
+  .font-sans
+    = f.label :body, class: 'block mb-2 font-bold text-gray-600'
+    = f.text_area :body, class: 'h-20 border border-gray-300 shadow p-3 w-full rounded mb-', required: true
+  = f.submit 'New Comment', class: 'block w-48 bg-green-500 hover:bg-green-700 cursor-pointer text-white font-bold p-4 rounded-lg'

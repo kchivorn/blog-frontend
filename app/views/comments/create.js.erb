@@ -1,0 +1,6 @@
+var commentsDiv = document.getElementById('comments');
+var wrapper = document.createElement('div');
+document.getElementById('body').value = '';
+
+wrapper.innerHTML = "<%= j render 'comments/comment', comment: @comment %>";
+commentsDiv.prepend(wrapper.firstChild);
