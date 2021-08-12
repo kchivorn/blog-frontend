@@ -1,24 +1,18 @@
-# README
+# A Simple Blog Frontend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Running the app
 
-Things you may want to cover:
+Start api server by following this repo https://github.com/bluethumbart/blog-server
 
-* Ruby version
+git clone the app and run bundle install
 
-* System dependencies
+```
+git clone git@github.com:kchivorn/blog-frontend.git
+cd blog-frontend.git
+bundle install
+rails s
+```
 
-* Configuration
+## Demo
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+hosting on Digital Ocean http://68.183.190.101/
