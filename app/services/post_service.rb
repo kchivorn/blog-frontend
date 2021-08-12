@@ -1,6 +1,6 @@
 module PostService
   include HTTParty
-  base_uri 'http://localhost:4000'
+  base_uri ENV.fetch('BLOG_SERVER_URL')
 
   def self.all
     posts_json = get('/posts')
